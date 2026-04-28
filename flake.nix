@@ -1,5 +1,6 @@
 {
   description = "FrostPhoenix's nixos configuration";
+  
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -26,20 +27,31 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+    };
     superfile.url = "github:yorukot/superfile";
     zen-browser.url = "github:0xc000022070/zen-browser-flake/beta";
-  };
+    opencode.url = "github:sst/opencode";
+    #zapret.url = ""
+    #opencode-flake.url = "github:aodhanhayter/opencode-flake";ш
+#    opencode-flake.url = "github:AodhanHayter/opencode-flake";
+#programs.ssh.startAgent = true;
+};
+# programs.ssh.startAgent = true;
+
 
   outputs =
     { nixpkgs, self, ... }@inputs:
     let
-      username = "frostphoenix";
+      username = "bitplugg";
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
+
     in
     {
       nixosConfigurations = {

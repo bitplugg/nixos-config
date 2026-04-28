@@ -173,7 +173,10 @@
         }
         zle -N zle-line-init
         zle -N zle-line-finish
-      fi
+	maxfetch
+	export PATH="$HOME/.npm-global/bin:$PATH"
+	export PATH="$HOME/.local/bin:$PATH"
+fi
     '';
   };
 

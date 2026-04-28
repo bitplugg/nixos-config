@@ -40,5 +40,11 @@
     ./waypaper.nix                    # GUI wallpaper picker
     ./xdg-mimes.nix                   # xdg config
     ./zsh                             # shell
+    ./node.nix                        # node
+    ./telegram.nix                    # telegram
+    ./pipx.nix
+    ./figlet.nix
+    ./llm-agents.nix
   ];
 }
+

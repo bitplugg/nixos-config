@@ -40,6 +40,9 @@
       # python
       piv = "python -m venv .venv";
       psv = "source .venv/bin/activate";
+
+      # rebuild
+      rebuild = " clear && fastfetch -c examples/11.jsonc&& sudo nixos-rebuild switch --flake .#laptop && echo 'Done! Pls check'";
     };
   };
 }

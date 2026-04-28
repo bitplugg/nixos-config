@@ -16,7 +16,7 @@
       "vsicons.dontShowNewVersionMessage" = true;
       "explorer.confirmDragAndDrop" = false;
       "editor.fontLigatures" = true;
-      "editor.minimap.enabled" = false;
+      "editor.minimap.enabled" = true;
       "workbench.startupEditor" = "none";
 
       "editor.formatOnSave" = true;
@@ -35,12 +35,12 @@
       "breadcrumbs.enabled" = false;
       "editor.renderControlCharacters" = false;
       "workbench.activityBar.location" = "hidden";
-      "workbench.statusBar.visible" = false;
+      "workbench.statusBar.visible" = true;
       "editor.scrollbar.verticalScrollbarSize" = 2;
       "editor.scrollbar.horizontalScrollbarSize" = 2;
       "editor.scrollbar.vertical" = "hidden";
       "editor.scrollbar.horizontal" = "hidden";
-      "workbench.layoutControl.enabled" = false;
+      "workbench.layoutControl.enabled" = true;
 
       "editor.mouseWheelZoom" = true;
 

@@ -3,6 +3,8 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/core
+    ./../../modules/core/zapret.nix
+    ./../../modules/core/localsend.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -49,7 +51,15 @@
   };
 
   powerManagement.cpuFreqGovernor = "performance";
+  programs.amnezia-vpn.enable = true;
+  nix.settings = {
+    substituters = [
+      "https://mirror.yandex.ru/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://cache.nixos.org"
+    ];
 
+  };
   boot = {
     kernelModules = [ "acpi_call" ];
     extraModulePackages =
