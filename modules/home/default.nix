@@ -47,5 +47,7 @@
     ./llm-agents.nix		      # llm manager
     ./rust.nix                        # rust language
     ./metasploit.nix                  # msfconsole
+    ./gcc.nix                         # gcc enivroment
+    ./zoom.nix                        # zoom
   ];
 }
