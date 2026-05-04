@@ -20,7 +20,7 @@
     ./kitty.nix                       # terminal
     ./lazygit.nix
     ./micro.nix                       # nano replacement
-    ./nemo.nix                        # file manager
+    ./superfile/superfile.nix         # file manager
     ./nvim.nix                        # neovim editor
     ./obsidian.nix
     ./p10k/p10k.nix
@@ -42,9 +42,10 @@
     ./zsh                             # shell
     ./node.nix                        # node
     ./telegram.nix                    # telegram
-    ./pipx.nix
-    ./figlet.nix
-    ./llm-agents.nix
+    ./pipx.nix                        # python packages manager
+    ./figlet.nix		      # figlet
+    ./llm-agents.nix		      # llm manager
+    ./rust.nix                        # rust language
+    ./metasploit.nix                  # msfconsole
   ];
 }
-

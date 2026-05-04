@@ -27,7 +27,7 @@
       "$mod, P, pseudo,"
       "$mod, X, togglesplit,"
       "$mod, T, exec, toggle-oppacity"
-      "$mod, E, exec, nemo"
+      "$mod, E, exec, superfile"
       "ALT, E, exec, hyprctl dispatch exec '[float; size 1111 700] nemo'"
       "$mod SHIFT, B, exec, toggle-waybar"
       "$mod, C ,exec, hyprpicker -a"
