@@ -8,16 +8,16 @@
    <div align="center">
       <p></p>
       <div align="center">
-         <a href="https://github.com/Frost-Phoenix/nixos-config/stargazers">
-            <img src="https://img.shields.io/github/stars/Frost-Phoenix/nixos-config?color=FABD2F&labelColor=282828&style=for-the-badge&logo=starship&logoColor=FABD2F">
+         <a href="https://github.com/bitplugg/nixos-config/stargazers">
+            <img src="https://img.shields.io/github/stars/bitplugg/nixos-config?color=FABD2F&labelColor=282828&style=for-the-badge&logo=starship&logoColor=FABD2F">
          </a>
-         <a href="https://github.com/Frost-Phoenix/nixos-config/">
-            <img src="https://img.shields.io/github/repo-size/Frost-Phoenix/nixos-config?color=B16286&labelColor=282828&style=for-the-badge&logo=github&logoColor=B16286">
+         <a href="https://github.com/bitplugg/nixos-config/">
+            <img src="https://img.shields.io/github/repo-size/bitplugg/nixos-config?color=B16286&labelColor=282828&style=for-the-badge&logo=github&logoColor=B16286">
          </a>
          <a = href="https://nixos.org">
             <img src="https://img.shields.io/badge/NixOS-unstable-blue.svg?style=for-the-badge&labelColor=282828&logo=NixOS&logoColor=458588&color=458588">
          </a>
-         <a href="https://github.com/Frost-Phoenix/nixos-config/blob/main/LICENSE">
+         <a href="https://github.com/bitplugg/nixos-config/blob/main/LICENSE">
             <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&colorA=282828&colorB=98971A&logo=unlicense&logoColor=98971A&"/>
          </a>
       </div>
@@ -101,6 +101,7 @@ You can find my previous Catppuccin rice [here](https://github.com/Frost-Phoenix
 > 1. Review the code thoroughly
 > 2. Understand what each module does
 > 3. And adapt it to your specific needs
+> 4. THIS CUSTOM FROST-PHOENIX FORK REPO, BITPLUGG MADE 10%, also too russia with love
 
 ## 📚 Layout
 
@@ -228,7 +229,7 @@ First, install NixOS using any [graphical ISO](https://nixos.org/download.html#n
 
 ```bash
 nix-shell -p git
-git clone https://github.com/Frost-Phoenix/nixos-config
+git clone https://github.com/bitplugg/nixos-config
 cd nixos-config
 ```
 
@@ -243,6 +244,10 @@ The configuration expects the repo to be located at `$HOME/nixos-config`.
 ./install.sh
 ```
 
+> [!ALSO,IF YOU WANT BEAUTIFUL REBUILD RUN THIS COMMAND]
+```bash
+clear && maxfetch && sudo nixos-rebuild switch --flake .#(your host) && figlet "DONE,CHECK"
+```
 The script will guide you through host selection and apply the configuration.
 
 The installation phase can take quite some time depending on your machine.
