@@ -4,7 +4,7 @@ let
 in
 {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
   ];
 
   programs.nixvim = {
@@ -80,9 +80,13 @@ in
           rust_analyzer.enable = true;
           pyright.enable = true;
           ts_ls.enable = true;   # TypeScript/JavaScript
-        };
+	};
+	rust_analyzer = {
+    	    enable = true;
+    	    installCargo = false;   # если cargo уже стоит отдельно
+            installRustc = false;   # если rustc уже стоит отдельно
+	};
       };
-
       # Сниппеты
       luasnip.enable = true;
 
