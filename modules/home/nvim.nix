@@ -57,6 +57,8 @@ in
       trouble.enable = true;
       autotag.enable = true;
       vim-surround.enable = true;
+      typescript-tools.enable = true;
+      nvim-ts-autotag.enable = true;
       
       #Setting btw
       plugins.indent-blankline = {
@@ -99,6 +101,27 @@ in
           messages.view = "cmdline_popup";
         };
       };
+      rustaceanvim = {
+        enable = true;
+        settings = {
+          server = {
+            settings = {
+              ["rust-analyzer"] = {
+                checkOnSave = true;
+                check = { command = "clippy"; };
+              };
+            };
+          };
+        };
+      };
+      crates.enable = true;
+      dap = {
+        enable = true;
+        extensions = {
+          dap-python.enable = true;
+        };
+      };
+    venv-selector.enable = true;
 
       # Стартовый экран с ASCII-артом и быстрыми клавишами
       dashboard = {
@@ -132,6 +155,12 @@ in
                 desc = "Home Dir";
                 action = "Telescope find_files cwd=$HOME";
                 key = "h";
+              }
+              {
+                icon = "⏻ ";
+                desc = "Exit";
+                action = "quit";
+                key = "q";
               }
             ];
           };
