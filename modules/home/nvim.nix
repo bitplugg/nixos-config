@@ -49,7 +49,20 @@ in
       comment.enable = true;
       which-key.enable = true;
       web-devicons.enable = true;  # иконки для dashboard и плагинов
-
+      fugitive.enable = true;
+      tabnine.enable = true;
+      floaterm.enable = true;
+      bufferline.enable = true;
+      colorizer.enable = true;
+      trouble.enable = true;
+      autotag.enable = true;
+      surround.enable = true;
+      
+      #Setting btw
+      plugins.indent-blankline = {
+        enable = true;
+        settings.scope.enabled = true;
+      };
       cmp = {
         enable = true;
         sources = [
