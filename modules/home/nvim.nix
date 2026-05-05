@@ -13,9 +13,9 @@ in
     vimAlias = true;
 
     # Цветовая схема (можно выбрать любую, например catppuccin)
-    colorschemes.catppuccin = {
+    colorschemes.gruvbox = {
       enable = true;
-      flavour = "mocha"; # latte, frappe, macchiato, mocha
+      flavour = "gruvbox"; # latte, frappe, macchiato, mocha
     };
 
     # Базовая настройка редактора
@@ -59,6 +59,7 @@ in
 
       # Управление окнами и табами через which-key
       which-key.enable = true;
+      plugins.web-devicons.enable = true;
 
       # Автодополнение и LSP
       cmp = {
@@ -96,7 +97,7 @@ in
       stylua        # Lua форматтер
       rust-analyzer
       pyright
-      nodePackages.typescript-language-server
+      typescript-language-server
     ];
   };
 }

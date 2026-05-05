@@ -33,6 +33,7 @@
     superfile.url = "github:yorukot/superfile";
     zen-browser.url = "github:0xc000022070/zen-browser-flake/beta";
     opencode.url = "github:sst/opencode";
+    #inputs.nixvim.homeModules.nixvim = "github:nix-community/nixvim";
     nixvim.url = "github:nix-community/nixvim";    #добавь это как отдельный вход
     #inputs.nixvim.url = "github:nix-community/nixvim";
     #zapret.url = ""

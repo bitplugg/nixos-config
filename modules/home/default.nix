@@ -49,5 +49,6 @@
     ./metasploit.nix                  # msfconsole
     ./gcc.nix                         # gcc enivroment
     ./zoom.nix                        # zoom
+    ./rust.nix                        # rust language
   ];
 }
