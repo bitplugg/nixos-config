@@ -56,7 +56,7 @@ in
       colorizer.enable = true;
       trouble.enable = true;
       autotag.enable = true;
-      surround.enable = true;
+      vim-surround.enable = true;
       
       #Setting btw
       plugins.indent-blankline = {
