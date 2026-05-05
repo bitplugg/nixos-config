@@ -1,11 +1,11 @@
 { config, inputs, pkgs, ... }:
 let
   nixvim = inputs.nixvim.legacyPackages.${pkgs.system};
-
-  # Читаем ASCII-арт из соседнего файла и разбиваем на список строк
+  lib = pkgs.lib;
+  asciiRaw = builtins.readFile ./ascii.txt;
   asciiLines = builtins.filter
     (line: line != "")
-    (builtins.splitString "\n" (builtins.readFile ./ascii.txt));
+    (lib.strings.splitString "\n" asciiRaw);
 in
 {
   imports = [
@@ -19,7 +19,7 @@ in
 
     colorschemes.gruvbox = {
       enable = true;
-      flavour = "gruvbox";   # можно сменить на другой
+      flavour = "gruvbox";   # можно сменить на "catppuccin" и т.п.
     };
 
     opts = {
@@ -30,7 +30,7 @@ in
       expandtab = true;
       mouse = "a";
       undofile = true;
-      cmdheight = 0;          # убираем стандартную строку команд
+      cmdheight = 0;          # скрываем обычную строку команд
     };
 
     keymaps = [
@@ -48,7 +48,7 @@ in
       nvim-autopairs.enable = true;
       comment.enable = true;
       which-key.enable = true;
-      web-devicons.enable = true;    # обязательно явно включить
+      web-devicons.enable = true;  # иконки для dashboard и плагинов
 
       cmp = {
         enable = true;
@@ -64,12 +64,12 @@ in
         enable = true;
         servers = {
           lua_ls.enable = true;
-          nil_ls.enable = true;
+          nil_ls.enable = true;   # Nix LSP
           pyright.enable = true;
-          ts_ls.enable = true;
+          ts_ls.enable = true;   # TypeScript/JavaScript
           rust_analyzer = {
             enable = true;
-            installCargo = false;
+            installCargo = false;   # предполагаем, что cargo/rustc уже установлены
             installRustc = false;
           };
         };
@@ -87,14 +87,40 @@ in
         };
       };
 
-      # Стартовый экран с артом из внешнего файла
+      # Стартовый экран с ASCII-артом и быстрыми клавишами
       dashboard = {
         enable = true;
         settings = {
           config = {
-            header = asciiLines;          # ← берём из переменной
-            packages.enable = false;
-            project.enable = true;
+            header = asciiLines;         # арт из ./ascii.txt
+            packages.enable = false;     # не показывать список плагинов
+            project.enable = true;       # показывать недавние проекты
+            shortcut = [
+              {
+                icon = "🔍  ";
+                desc = "Find File";
+                action = "Telescope find_files";
+                key = "f";
+              }
+              {
+                icon = "⚙️  ";
+                desc = "Edit Config";
+                action = "edit $HOME/nixos-config/modules/home/nvim.nix";
+                key = "c";
+              }
+              {
+                icon = "🎨 ";
+                desc = "Colorscheme";
+                action = "Telescope colorscheme";
+                key = "t";
+              }
+              {
+                icon = "🏠 ";
+                desc = "Home Dir";
+                action = "Telescope find_files cwd=$HOME";
+                key = "h";
+              }
+            ];
           };
           theme = "hyper";
         };
@@ -102,9 +128,9 @@ in
     };
 
     extraPackages = with pkgs; [
-      nil
-      alejandra
-      stylua
+      nil           # Nix LSP
+      alejandra     # Nix форматтер
+      stylua        # Lua форматтер
       rust-analyzer
       pyright
       typescript-language-server
