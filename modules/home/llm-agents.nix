@@ -20,7 +20,8 @@ in
     #claude-code
     #    codex
     gemini-cli
-    # copilot-cli  # раскомментируй, если нужен
+    copilot-cli  # раскомментируй, если нужен
     opencode
+    #qwen
   ];
 }

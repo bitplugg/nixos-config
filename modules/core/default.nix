@@ -21,5 +21,7 @@
     ./virtualization.nix
     # ./qmk.nix
     ./postgresql.nix
+    ./localsend.nix
+    ./zapret.nix
   ];
 }
