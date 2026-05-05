@@ -106,7 +106,7 @@ in
         settings = {
           server = {
             settings = {
-              ["rust-analyzer"] = {
+              "rust-analyzer" = {
                 checkOnSave = true;
                 check = { command = "clippy"; };
               };
