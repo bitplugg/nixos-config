@@ -1,6 +1,11 @@
 { config, inputs, pkgs, ... }:
 let
   nixvim = inputs.nixvim.legacyPackages.${pkgs.system};
+
+  # Читаем ASCII-арт из соседнего файла и разбиваем на список строк
+  asciiLines = builtins.filter
+    (line: line != "")
+    (builtins.splitString "\n" (builtins.readFile ./ascii.txt));
 in
 {
   imports = [
@@ -12,13 +17,11 @@ in
     viAlias = true;
     vimAlias = true;
 
-    # Цветовая схема (можно выбрать любую, например catppuccin)
     colorschemes.gruvbox = {
       enable = true;
-      flavour = "gruvbox"; # latte, frappe, macchiato, mocha
+      flavour = "gruvbox";   # можно сменить на другой
     };
 
-    # Базовая настройка редактора
     opts = {
       number = true;
       relativenumber = true;
@@ -27,9 +30,9 @@ in
       expandtab = true;
       mouse = "a";
       undofile = true;
+      cmdheight = 0;          # убираем стандартную строку команд
     };
 
-    # Клавиши
     keymaps = [
       { mode = [ "n" "v" ]; key = "<Space>"; action = "<Nop>"; options.silent = true; }
       { mode = "n"; key = "<leader>e"; action = ":Neotree toggle<CR>"; options.desc = "Toggle file explorer"; }
@@ -37,31 +40,16 @@ in
       { mode = "n"; key = "<leader>fg"; action = ":Telescope live_grep<CR>"; options.desc = "Live grep"; }
     ];
 
-    # Активация стандартных плагинов "как в современных IDE"
     plugins = {
-      # Проводник файлов
       neo-tree.enable = true;
-
-      # Fuzzy finder
       telescope.enable = true;
-
-      # Статус-бар
       lualine.enable = true;
-
-      # Подсветка синтаксиса на основе Tree-sitter
       treesitter.enable = true;
-
-      # Автоматические пары скобок/кавычек
       nvim-autopairs.enable = true;
-
-      # Комментирование (gcc)
       comment.enable = true;
-
-      # Управление окнами и табами через which-key
       which-key.enable = true;
-      plugins.web-devicons.enable = true;
+      web-devicons.enable = true;    # обязательно явно включить
 
-      # Автодополнение и LSP
       cmp = {
         enable = true;
         sources = [
@@ -76,29 +64,47 @@ in
         enable = true;
         servers = {
           lua_ls.enable = true;
-          nil_ls.enable = true;   # Nix LSP
-          rust_analyzer.enable = true;
+          nil_ls.enable = true;
           pyright.enable = true;
-          ts_ls.enable = true;   # TypeScript/JavaScript
-	};
-	rust_analyzer = {
-    	    enable = true;
-    	    installCargo = false;   # если cargo уже стоит отдельно
-            installRustc = false;   # если rustc уже стоит отдельно
-	};
+          ts_ls.enable = true;
+          rust_analyzer = {
+            enable = true;
+            installCargo = false;
+            installRustc = false;
+          };
+        };
       };
-      # Сниппеты
-      luasnip.enable = true;
 
-      # Git-интеграция
+      luasnip.enable = true;
       gitsigns.enable = true;
+
+      # Плавающая командная строка
+      noice = {
+        enable = true;
+        settings = {
+          cmdline.view = "cmdline_popup";
+          messages.view = "cmdline_popup";
+        };
+      };
+
+      # Стартовый экран с артом из внешнего файла
+      dashboard = {
+        enable = true;
+        settings = {
+          config = {
+            header = asciiLines;          # ← берём из переменной
+            packages.enable = false;
+            project.enable = true;
+          };
+          theme = "hyper";
+        };
+      };
     };
 
-    # Внешние пакеты (форматтеры, линтеры, дополнительные серверы)
     extraPackages = with pkgs; [
-      nil           # Nix LSP
-      alejandra     # Nix форматтер
-      stylua        # Lua форматтер
+      nil
+      alejandra
+      stylua
       rust-analyzer
       pyright
       typescript-language-server
