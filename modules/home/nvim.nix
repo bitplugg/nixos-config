@@ -19,7 +19,7 @@ in
 
     colorschemes.gruvbox = {
       enable = true;
-      flavour = "gruvbox";   # можно сменить на "catppuccin" и т.п.
+      flavour = "gruvbox";
     };
 
     opts = {
@@ -48,23 +48,31 @@ in
       nvim-autopairs.enable = true;
       comment.enable = true;
       which-key.enable = true;
-      web-devicons.enable = true;  # иконки для dashboard и плагинов
+      web-devicons.enable = true;
+      gitsigns.enable = true;
       fugitive.enable = true;
-      tabnine.enable = true;
-      floaterm.enable = true;
-      bufferline.enable = true;
-      colorizer.enable = true;
-      trouble.enable = true;
-      autotag.enable = true;
-      vim-surround.enable = true;
-      typescript-tools.enable = true;
-      nvim-ts-autotag.enable = true;
-      
-      #Setting btw
-      plugins.indent-blankline = {
+      luasnip.enable = true;
+      tabnine.enable = true;          # если хочешь, можно заменить на copilot
+      floaterm.enable = true;         # ← плавающий терминал
+
+      surround.enable = true;         # vim-surround
+      bufferline.enable = true;       # табы для буферов
+
+      indent-blankline = {
         enable = true;
         settings.scope.enabled = true;
       };
+
+      colorizer.enable = true;
+      undotree.enable = true;
+      trouble.enable = true;
+      autotag.enable = true;
+
+      markdown-preview = {
+        enable = true;
+        settings.browser = "firefox";
+      };
+
       cmp = {
         enable = true;
         sources = [
@@ -81,26 +89,13 @@ in
           lua_ls.enable = true;
           nil_ls.enable = true;   # Nix LSP
           pyright.enable = true;
-          ts_ls.enable = true;   # TypeScript/JavaScript
-          rust_analyzer = {
-            enable = true;
-            installCargo = false;   # предполагаем, что cargo/rustc уже установлены
-            installRustc = false;
-          };
+          ts_ls.enable = true;    # TypeScript/JavaScript
+          # rust_analyzer больше не нужен — им управляет rustaceanvim
         };
       };
+      vim.g.mapleader = "alt";
 
-      luasnip.enable = true;
-      gitsigns.enable = true;
-
-      # Плавающая командная строка
-      noice = {
-        enable = true;
-        settings = {
-          cmdline.view = "cmdline_popup";
-          messages.view = "cmdline_popup";
-        };
-      };
+      # Rustaceanvim заменяет отдельный rust-analyzer
       rustaceanvim = {
         enable = true;
         settings = {
@@ -114,23 +109,26 @@ in
           };
         };
       };
-      crates.enable = true;
-      dap = {
+
+      crates.enable = true;         # управление зависимостями Cargo.toml
+
+      # Плавающая командная строка
+      noice = {
         enable = true;
-        extensions = {
-          dap-python.enable = true;
+        settings = {
+          cmdline.view = "cmdline_popup";
+          messages.view = "cmdline_popup";
         };
       };
-    venv-selector.enable = true;
 
       # Стартовый экран с ASCII-артом и быстрыми клавишами
       dashboard = {
         enable = true;
         settings = {
           config = {
-            header = asciiLines;         # арт из ./ascii.txt
-            packages.enable = false;     # не показывать список плагинов
-            project.enable = true;       # показывать недавние проекты
+            header = asciiLines;
+            packages.enable = false;
+            project.enable = true;
             shortcut = [
               {
                 icon = "🔍  ";
@@ -160,7 +158,7 @@ in
                 icon = "⏻ ";
                 desc = "Exit";
                 action = "quit";
-                key = "q";
+                key = "h";
               }
             ];
           };
@@ -173,9 +171,11 @@ in
       nil           # Nix LSP
       alejandra     # Nix форматтер
       stylua        # Lua форматтер
-      rust-analyzer
+      rust-analyzer # всё ещё нужен для rustaceanvim
       pyright
       typescript-language-server
+      nodejs        # для markdown-preview
+      python3Packages.debugpy # для nvim-dap-python (если добавишь dap)
     ];
   };
 }
