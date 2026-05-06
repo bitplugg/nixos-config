@@ -43,12 +43,13 @@
     ./node.nix                        # node
     ./telegram.nix                    # telegram
     ./pipx.nix                        # python packages manager
-    ./figlet.nix		      # figlet
-    ./llm-agents.nix		      # llm manager
+    ./figlet.nix		                  # figlet
+    ./llm-agents.nix		              # llm manager
     ./rust.nix                        # rust language
     ./metasploit.nix                  # msfconsole
     ./gcc.nix                         # gcc enivroment
     ./zoom.nix                        # zoom
     ./rust.nix                        # rust language
+    ./gradle.nix                      # gradle -> build apk
   ];
 }
