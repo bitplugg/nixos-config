@@ -55,7 +55,7 @@ in
       tabnine.enable = true;          # если хочешь, можно заменить на copilot
       floaterm.enable = true;         # ← плавающий терминал
 
-      surround.enable = true;         # vim-surround
+      vim-surround.enable = true;         # vim-surround
       bufferline.enable = true;       # табы для буферов
 
       indent-blankline = {
@@ -93,7 +93,7 @@ in
           # rust_analyzer больше не нужен — им управляет rustaceanvim
         };
       };
-      vim.g.mapleader = "alt";
+      vim.g.mapleader = "w";
 
       # Rustaceanvim заменяет отдельный rust-analyzer
       rustaceanvim = {
