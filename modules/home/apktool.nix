@@ -4,7 +4,6 @@
     apktool
     apksigner
     jadx
-    d8
   ];
 }
 
