@@ -4,6 +4,7 @@
     apktool
     apksigner
     jadx
+    zipalign
   ];
 }
 
