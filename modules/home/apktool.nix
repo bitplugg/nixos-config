@@ -4,7 +4,7 @@
     apktool
     apksigner
     jadx
-    zipalign
+    android-build-tools
   ];
 }
 
