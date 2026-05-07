@@ -51,5 +51,6 @@
     ./zoom.nix                        # zoom
     ./rust.nix                        # rust language
     ./gradle.nix                      # gradle -> build apk
+    ./apktool.nix                     # apktool pkgs
   ];
 }
