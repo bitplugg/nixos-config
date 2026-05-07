@@ -4,7 +4,6 @@
     apktool
     apksigner
     jadx
-    android-build-tools
-  ];
+   ];
 }
 
