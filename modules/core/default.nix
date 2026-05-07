@@ -23,6 +23,5 @@
     ./postgresql.nix
     ./localsend.nix
     ./zapret.nix
-    rkn-block-checker
   ];
 }
