@@ -48,13 +48,12 @@
     { nixpkgs, self, ... }@inputs:
     let
       username = "bitplugg";
-      nixpkgs.hostPlatform = "x86_64-linux";
+      system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
-
     in
     {
       nixosConfigurations = {
