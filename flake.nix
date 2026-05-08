@@ -91,13 +91,11 @@
         };
       };
   packages.${system} = {
-      # Для brrtfetch
     brrtfetch = pkgs.callPackage ./pkgs/brrtfetch {};
 
-      # Для rkn-block-checker
     rkn-block-checker = pkgs.callPackage ./pkgs/rkn-block-checker {};
 
-      # Пакет по умолчанию
-    default = self.packages.${system}.brrtfetch;
+    default = self.packages.${system}.brrtfetch{};
+
     };
 }
