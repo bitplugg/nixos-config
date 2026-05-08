@@ -177,6 +177,7 @@
 	export PATH="$HOME/.npm-global/bin:$PATH"
 	export PATH="$HOME/.local/bin:$PATH"
 	export PATH="/usr/bin:$PATH"
+  export PATH="$HOME/nix-pack/result/bin:$PATH"
 fi
     '';
   };
