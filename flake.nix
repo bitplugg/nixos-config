@@ -92,10 +92,7 @@
       };
   packages.${system} = {
     brrtfetch = pkgs.callPackage ./pkgs/brrtfetch {};
-
     rkn-block-checker = pkgs.callPackage ./pkgs/rkn-block-checker {};
-
-    default = self.packages.${system}.brrtfetch{};
-
-    };
+    default = self.packages.${system}.brrtfetch;
+  };
 }
