@@ -28,6 +28,9 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/ferrebarrat/brrtfetch";
     license = lib.licenses.mit;
     mainProgram = "brrtfetch";
-    maintainers = with lib.maintainers; [ bitplugg ];
+    maintainers = with lib.maintainers; [{ 
+      name = "bitplugg";
+      email = "bitplugg@example.com";
+    }];
     platforms = lib.platforms.all;
   };
