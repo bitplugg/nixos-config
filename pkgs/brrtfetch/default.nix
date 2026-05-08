@@ -7,7 +7,7 @@ buildGoModule rec {
     owner = "ferrebarrat";
     repo = "brrtfetch";
     rev = "master";
-    hash = lib.fakeSha256;   # первая попытка — ошибка, Nix подставит правильный
+    hash = lib.fakeHash;   # первая попытка — ошибка, Nix подставит правильный
   };
 
   vendorHash = lib.fakeSha256;  # то же самое
