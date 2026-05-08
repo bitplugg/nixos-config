@@ -13,6 +13,7 @@
     cpupower-gui
     powertop
     rkn-block-checker
+    brrtfetch
   ];
 
   services = {
