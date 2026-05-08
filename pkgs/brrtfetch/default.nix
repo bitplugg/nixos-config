@@ -1,21 +1,33 @@
-{ lib, buildGoModule, fetchFromGitHub }:
-buildGoModule rec {
+{ lib, stdenv, fetchFromGitHub, go }:
+
+stdenv.mkDerivation rec {
   pname = "brrtfetch";
-  version = "latest";
+  version = "unstable-2025-10-05";
 
   src = fetchFromGitHub {
     owner = "ferrebarrat";
     repo = "brrtfetch";
-    rev = "95233c2fbf5a514a0ab7910ae3ea002d642fc5f7";
-    hash = "sha256-qBrNw7x7TkGmBhT4Py/FNnmBJbD3angCKsvxq/nSqLY=";   # первая попытка — ошибка, Nix подставит правильный
+    rev = "main";
+    hash = "sha256-hC2R17LadoVanjLs4iBTr55qNJEDYKI9H3lQzyHQIek=";
   };
 
-  vendorHash = "sha256-qBrNw7x7TkGmBhT4Py/FNnmBJbD3angCKsvxq/nSqLY=";  # то же самое
+  nativeBuildInputs = [ go ];
+
+  buildPhase = ''
+    export GOCACHE=$TMPDIR/go-cache
+    go build -o brrtfetch ./go/main.go
+  '';
+
+  installPhase = ''
+    mkdir -p $out/bin
+    cp brrtfetch $out/bin/
+  '';
 
   meta = {
     description = "Render animated ASCII art from a GIF for your sysinfo fetcher of choice";
     homepage = "https://github.com/ferrebarrat/brrtfetch";
     license = lib.licenses.mit;
     mainProgram = "brrtfetch";
+    maintainers = with lib.maintainers; [ ];
+    platforms = lib.platforms.all;
   };
-}
