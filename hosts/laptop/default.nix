@@ -13,8 +13,7 @@
     cpupower-gui
     powertop
     rkn-block-checker
-    brrtfetch
-  ];
+  ] ++ [ self.packages.${pkgs.system}.brrtfetch ];
 
   services = {
     power-profiles-daemon.enable = true;
