@@ -6,7 +6,7 @@ let
     version = "0.19";
     src = pkgs.fetchurl {
       url = "https://releases.tuna.am/tuna/${version}/tuna_${version}-1_amd64.deb";
-      hash = lib.fakeSha256;   # после первой сборки замените на реальный хеш
+      hash = "";   # после первой сборки замените на реальный хеш
     };
     nativeBuildInputs = [ pkgs.dpkg ];
     unpackPhase = "dpkg-deb -x $src .";
