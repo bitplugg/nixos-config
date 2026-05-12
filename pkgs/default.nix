@@ -10,5 +10,5 @@
   pomo = pkgs.callPackage ./pomo { };
   brrfetch = pkgs.callPackage ./brrfetch { };
   rkn-block-checker = pkgs.callPackage ./rkn-block-checker { };
-  tuna = pkgs.callPackage ./tuna { };
+#  tuna = pkgs.callPackage ./tuna { };
 }
