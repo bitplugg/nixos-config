@@ -30,6 +30,10 @@
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };
+    antigravity-nix = {
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     superfile.url = "github:yorukot/superfile";
     zen-browser.url = "github:0xc000022070/zen-browser-flake/beta";
     opencode.url = "github:sst/opencode";
@@ -54,6 +58,9 @@
         inherit system;
         config.allowUnfree = true;
       };
+#      enivroment.systemPackages {
+#        antigravity-nix.packages.x86_64-linux.default
+#      };
       lib = nixpkgs.lib;
     in
     {

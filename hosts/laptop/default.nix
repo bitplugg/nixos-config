@@ -1,4 +1,4 @@
-{ pkgs, config, self, ... }:
+{ pkgs, config, self, inputs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -13,7 +13,8 @@
     cpupower-gui
     powertop
     rkn-block-checker
-  ] ++ [ self.packages.${pkgs.system}.brrtfetch ];
+    inputs.antigravity-nix.packages.${pkgs.system}.default
+  ];  #++ [ self.packages.${pkgs.system}.brrtfetch ];
 
   services = {
     power-profiles-daemon.enable = true;
@@ -48,6 +49,9 @@
 
       # PCIE_ASPM_ON_AC = "default";
       # PCIE_ASPM_ON_BAT = "powersupersave";
+    };
+    mongodb = {
+      enable = true;
     };
   };
 

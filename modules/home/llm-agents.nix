@@ -23,5 +23,6 @@ in
     copilot-cli  # раскомментируй, если нужен
     opencode
     #qwen
+    #antigravity
   ];
 }

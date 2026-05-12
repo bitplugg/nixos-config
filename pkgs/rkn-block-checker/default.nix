@@ -9,7 +9,7 @@ python3.pkgs.buildPythonApplication rec {
     owner = "MayersScott";
     repo = pname;
     rev = "main";  # ← для стабильности укажи конкретный коммит
-    hash = "sha256-gfyrZI2oC/e2wjhhfFh/LW7/7UQ5ogZ7dLoqTJrDESY=";  # ← после первой сборки подставь правильный хэш
+    hash = "sha256-9redAEo+XytK7k2w5VDX4c1lgMqxnwNzSaDVAr1Jzjw=";  # ← после первой сборки подставь правильный хэш
   };
 
   build-system = with python3.pkgs; [ setuptools ];
