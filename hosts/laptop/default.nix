@@ -14,6 +14,7 @@
     powertop
     rkn-block-checker
     inputs.antigravity-nix.packages.${pkgs.system}.default
+    tuna
   ];  #++ [ self.packages.${pkgs.system}.brrtfetch ];
 
   services = {
