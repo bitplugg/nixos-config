@@ -6,7 +6,7 @@
 , lib
 , zlib
 , glib
-, stdenv.cc.cc
+ 
 }:
 
 let
