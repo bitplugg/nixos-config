@@ -16,7 +16,7 @@ let
     '';
   };
 in
-pkgs.buildFHSUserEnv {
+pkgs.buildFHSEnv {
   name = "tuna";
   targetPkgs = pkgs: with pkgs; [ zlib glib ];
   runScript = "tuna";
