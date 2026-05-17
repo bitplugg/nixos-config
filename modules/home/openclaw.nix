@@ -1,5 +1,5 @@
 # ./modules/home/openclaw.nix
-{ config, lib, pkgs, nix-openclaw, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   # Путь к файлу с секретами
@@ -14,9 +14,7 @@ let
   mistralBaseURL = "https://api.mistral.ai/v1";
 
 in {
-  imports = [
-    nix-openclaw.homeManagerModules.default
-  ];
+  imports = [ "${nix-openclaw}/homeManagerModules/default.nix" ];
 
   programs.openclaw = {
     enable = true;

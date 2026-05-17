@@ -51,13 +51,14 @@
 
 
   outputs =
-    { nixpkgs, self, ... }@inputs:
+    { nixpkgs, self, nix-openclaw, ... }@inputs:
     let
       username = "bitplugg";
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        inherit nix-openclaw;
       };
 #      enivroment.systemPackages {
 #        antigravity-nix.packages.x86_64-linux.default
