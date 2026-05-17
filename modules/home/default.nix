@@ -53,5 +53,6 @@
     ./gradle.nix                      # gradle -> build apk
     ./apktool.nix                     # apktool pkgs
     ./yazi.nix                        # yazi
+    ./openclaw.nix
   ];
 }
