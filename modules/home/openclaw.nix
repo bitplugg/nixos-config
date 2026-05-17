@@ -14,7 +14,7 @@ let
   mistralBaseURL = "https://api.mistral.ai/v1";
 
 in {
-  imports = [ "${inputs.nix-openclaw}/homeManagerModules/default.nix" ];
+  imports = [ "${inputs.nix-openclaw}/modules/default.nix" ];
 
   programs.openclaw = {
     enable = true;
