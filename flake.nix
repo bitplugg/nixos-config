@@ -38,6 +38,7 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake/beta";
     opencode.url = "github:sst/opencode";
     nixos-pack.url = "github:bitplugg/nixos-pack";
+    nix-openclaw.url = "github:openclaw/nix-openclaw";
     #inputs.nixvim.homeModules.nixvim = "github:nix-community/nixvim";
     nixvim.url = "github:nix-community/nixvim";    #добавь это как отдельный вход
     #inputs.nixvim.url = "github:nix-community/nixvim";
