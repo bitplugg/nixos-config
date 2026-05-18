@@ -63,7 +63,7 @@
       "https://mirror.yandex.ru/nix-channels/store"
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
-      "https://mirror.cyberhost.uk/nix-cache"
+#      "https://mirror.cyberhost.uk/nix-cache"
       "https://nix-cache.p3k.io"
       "https://cache.garnix.io"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
