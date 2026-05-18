@@ -78,8 +78,10 @@
         laptop = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [ ./hosts/laptop ];
+          home-manager.nixosModules.home-manager
           specialArgs = {
             host = "laptop";
+
             inherit self inputs username;
           };
         };
