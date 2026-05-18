@@ -51,7 +51,7 @@
 
 
   outputs =
-    { nixpkgs, self, nix-openclaw, ... }@inputs:
+    { nixpkgs, self, nix-openclaw, home-manager, ... }@inputs:
     let
       username = "bitplugg";
       system = "x86_64-linux";
@@ -77,11 +77,12 @@
         };
         laptop = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/laptop ];
-          home-manager.nixosModules.home-manager
+          modules = [ 
+            ./hosts/laptop 
+            home-manager.nixosModules.home-manager
+          ];
           specialArgs = {
             host = "laptop";
-
             inherit self inputs username;
           };
         };
