@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Меню для выбора действия
+choice=$(echo -e "🎵 Kew Audio\n🎥 Kew Video\n🔍 Поиск видео" | rofi -dmenu -p "Kew Widget")
+
+case "$choice" in
+    "🎵 Kew Audio")
+        kew
+        ;;
+    "🎥 Kew Video")
+        kew-video --playlist
+        ;;
+    "🔍 Поиск видео")
+        query=$(rofi -dmenu -p "Поиск:")
+        if [ -n "$query" ]; then
+            kew-video --search "$query"
+        fi
+        ;;
+esac

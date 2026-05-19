@@ -20,6 +20,8 @@
       control + alt + m = "exec kew";
       # Запуск kew-video по Ctrl+Alt+V
       control + alt + v = "exec kew-video --playlist";
+      # Запуск kew-widget по Ctrl+Alt+W
+      control + alt + w = "exec kew-widget";
     '';
   };
 
@@ -35,7 +37,7 @@
 
     ".local/bin/kew-widget".text = ''
       #!${pkgs.runtimeShell}
-      exec quickshell ${./quickshell/widgets/kew_widget.qs} "$@"
+      exec ${./scripts/kew-rofi} "$@"
     '';
     ".local/bin/kew-widget".executable = true;
 
