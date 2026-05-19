@@ -5,6 +5,8 @@
     quickshell
     python3
     python3Packages.requests
+    qt5.qtwayland  # Поддержка Wayland
+    qt5.qtdeclarative  # Для qmlscene/qml
     pipx  # Для установки зависимостей
   ];
 
@@ -19,6 +21,12 @@
     bind = CTRL ALT D, exec, quickshell ${./widgets/openclaw_widget.qs}
     bind = CTRL ALT P, exec, quickshell ${./widgets/wallpaper_widget.qs}
   '';
+
+  # Настройка Qt для работы в Wayland
+  home.sessionVariables = {
+    QT_QPA_PLATFORM = "wayland";
+    QT_PLUGIN_PATH = "${pkgs.qt5.qtbase}/lib/qt-5.15.8/plugins";
+  };
 
   # Создаём команду для скачивания обоев
   home.file.".local/bin/wallpaper-downloader".source = ./scripts/wallpaper_downloader.py;
