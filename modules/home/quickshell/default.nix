@@ -5,7 +5,7 @@
     quickshell
     python3
     python3Packages.requests
-    python-pip  # Для установки зависимостей
+    pipx  # Для установки зависимостей
   ];
 
   # Автозагрузка виджета погоды в Hyprland
