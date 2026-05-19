@@ -23,12 +23,31 @@
     '';
   };
 
-  # Alias для виджетов
-  home.aliases = {
-    "kew-video" = "kew-video";
-    "openclaw-widget" = "quickshell ${./quickshell/widgets/openclaw_widget.qs}";
-    "kew-widget" = "quickshell ${./quickshell/widgets/kew_widget.qs}";
-    "wallpaper-widget" = "quickshell ${./quickshell/widgets/wallpaper_widget.qs}";
+  # Создаём исполняемые алиасы в ~/.local/bin
+  home.file = {
+    ".local/bin/kew-video".text = ''
+      #!${pkgs.runtimeShell}
+      exec kew-video "$@"
+    '';
+    ".local/bin/kew-video".executable = true;
+
+    ".local/bin/openclaw-widget".text = ''
+      #!${pkgs.runtimeShell}
+      exec quickshell ${./quickshell/widgets/openclaw_widget.qs} "$@"
+    '';
+    ".local/bin/openclaw-widget".executable = true;
+
+    ".local/bin/kew-widget".text = ''
+      #!${pkgs.runtimeShell}
+      exec quickshell ${./quickshell/widgets/kew_widget.qs} "$@"
+    '';
+    ".local/bin/kew-widget".executable = true;
+
+    ".local/bin/wallpaper-widget".text = ''
+      #!${pkgs.runtimeShell}
+      exec quickshell ${./quickshell/widgets/wallpaper_widget.qs} "$@"
+    '';
+    ".local/bin/wallpaper-widget".executable = true;
   };
 
   # Автозапуск виджетов
