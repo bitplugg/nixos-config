@@ -1,55 +1,47 @@
-#!/usr/bin/env python3
-import os
-import sys
-import requests
-import random
+#!/usr/bin/env bash
 
 # Настройки
-UNSPLASH_ACCESS_KEY = "ТВОЙ_КЛЮЧ"  # Замени на свой ключ
-DOWNLOAD_DIR = os.path.expanduser("~/Pictures/Wallpapers")
-WALLPAPER_BANK_URL = "https://raw.githubusercontent.com/jakoolit/wallpaper-bank/main/wallpapers.json"
+UNSPLASH_ACCESS_KEY="xJrfWbR_d1-emmP-JEVotA667Qe1RPRiKdhX_urGVIE"
+DOWNLOAD_DIR="$HOME/Pictures/Wallpapers"
+WALLHAVEN_API_KEY=""  # Оставь пустым или добавь свой ключ
+WALLHAVEN_URL="https://wallhaven.cc/api/v1/search"
+QUERY="$1"
 
-def download_from_unsplash(query):
-    """Скачивает обои с Unsplash"""
-    url = f"https://api.unsplash.com/photos/random?query={query}&client_id={UNSPLASH_ACCESS_KEY}"
-    response = requests.get(url)
-    if response.status_code == 200:
-        image_url = response.json()["urls"]["full"]
-        image_data = requests.get(image_url).content
-        filename = os.path.join(DOWNLOAD_DIR, f"unsplash_{query}_{random.randint(1, 1000)}.jpg")
-        with open(filename, "wb") as f:
-            f.write(image_data)
-        print(f"Скачано с Unsplash: {filename}")
-    else:
-        print("Ошибка при скачивании с Unsplash")
+# Создаём директорию
+mkdir -p "$DOWNLOAD_DIR"
 
-def download_from_wallpaper_bank(query):
-    """Скачивает обои из Wallpaper Bank (Jakoolit)"""
-    try:
-        response = requests.get(WALLPAPER_BANK_URL)
-        if response.status_code == 200:
-            wallpapers = response.json()
-            filtered = [wp for wp in wallpapers if query.lower() in wp["tags"]]
-            if filtered:
-                wallpaper = random.choice(filtered)
-                image_data = requests.get(wallpaper["url"]).content
-                filename = os.path.join(DOWNLOAD_DIR, f"wallbank_{query}_{random.randint(1, 1000)}.jpg")
-                with open(filename, "wb") as f:
-                    f.write(image_data)
-                print(f"Скачано из Wallpaper Bank: {filename}")
-            else:
-                print("Обои не найдены в Wallpaper Bank")
-        else:
-            print("Ошибка при загрузке Wallpaper Bank")
-    except Exception as e:
-        print(f"Ошибка: {e}")
+# Скачивание с Unsplash
+download_unsplash() {
+    local json_url="https://api.unsplash.com/photos/random?query=$QUERY&client_id=$UNSPLASH_ACCESS_KEY"
+    local image_url=$(curl -s "$json_url" | jq -r '.urls.full')
+    if [ "$image_url" != "null" ]; then
+        local filename="$DOWNLOAD_DIR/unsplash_${QUERY}_$(date +%s).jpg"
+        curl -s -o "$filename" "$image_url"
+        echo "Скачано с Unsplash: $filename"
+    else
+        echo "Ошибка при скачивании с Unsplash"
+    fi
+}
 
-def download_wallpaper(query):
-    """Скачивает обои из всех источников"""
-    os.makedirs(DOWNLOAD_DIR, exist_ok=True)
-    download_from_wallpaper_bank(query)
-    download_from_unsplash(query)
+# Скачивание с Wallhaven
+download_wallhaven() {
+    local params="q=$QUERY&apikey=$WALLHAVEN_API_KEY&atleast=1920x1080&sorting=random"
+    local json_url="$WALLHAVEN_URL?$params"
+    local wallpapers=$(curl -s "$json_url")
+    local image_url=$(echo "$wallpapers" | jq -r '.data[0].path')
+    if [ "$image_url" != "null" ]; then
+        local filename="$DOWNLOAD_DIR/wallhaven_${QUERY}_$(date +%s).jpg"
+        curl -s -o "$filename" "$image_url"
+        echo "Скачано с Wallhaven: $filename"
+    else
+        echo "Обои не найдены на Wallhaven"
+    fi
+}
 
-if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        download_wallpaper(sys.argv[1])
+# Основная логика
+if [ -n "$QUERY" ]; then
+    download_unsplash
+    download_wallhaven
+else
+    echo "Использование: $0 <тема_обоев>"
+fi

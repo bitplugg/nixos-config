@@ -3,8 +3,9 @@
 {
   home.packages = with pkgs; [
     quickshell
-    python3  # Для скрипта скачивания обоев
-    python3Packages.requests  # Для Unsplash API
+    python3
+    python3Packages.requests
+    python3Packages.python-pip  # Для установки зависимостей
   ];
 
   # Автозагрузка виджета погоды в Hyprland

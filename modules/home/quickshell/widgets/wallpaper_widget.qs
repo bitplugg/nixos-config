@@ -36,7 +36,7 @@ Window {
 
             ComboBox {
                 id: sourceCombo
-                model: ["Unsplash", "Wallpaper Bank"]
+                model: ["Unsplash", "Wallhaven"]
                 currentIndex: 0
             }
 
