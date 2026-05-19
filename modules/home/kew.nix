@@ -23,11 +23,12 @@
     '';
   };
 
-  # Alias для kew (запуск kew-video из kew)
+  # Alias для виджетов
   home.aliases = {
     "kew-video" = "kew-video";
-    "openclaw-widget" = "quickshell ${./scripts/openclaw_widget.qs}";
-    "kew-widget" = "quickshell ${./scripts/kew_widget.qs}";
+    "openclaw-widget" = "quickshell ${./quickshell/widgets/openclaw_widget.qs}";
+    "kew-widget" = "quickshell ${./quickshell/widgets/kew_widget.qs}";
+    "wallpaper-widget" = "quickshell ${./quickshell/widgets/wallpaper_widget.qs}";
   };
 
   # Автозапуск виджетов
