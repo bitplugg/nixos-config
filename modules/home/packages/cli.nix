@@ -61,6 +61,7 @@
     imv
     lowfi
     mpv
+    imagemagick                      # Для генерации мемов
 
     ## Utilities
     entr                              # perform action when file change
@@ -76,7 +77,6 @@
     playerctl                         # controller for media players
     poweralertd
     socat
-    # sonoscli                          # Sonos CLI (отключено из-за ошибки)
     udiskie                           # Automounter for removable media
     unzip
     wget
