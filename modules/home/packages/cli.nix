@@ -76,7 +76,7 @@
     playerctl                         # controller for media players
     poweralertd
     socat
-    sonoscli                          # Sonos CLI
+    # sonoscli                          # Sonos CLI (отключено из-за ошибки)
     udiskie                           # Automounter for removable media
     unzip
     wget
