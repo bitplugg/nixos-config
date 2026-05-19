@@ -54,6 +54,7 @@
     ./apktool.nix                     # apktool pkgs
     ./yazi.nix                        # yazi
     ./openclaw.nix                    # openclaw
-    ./kew.nix                          # kew - консольный музыкальный плеер
+    ./kew.nix                         # kew
+    ./quickshell/default.nix          # quickshell
   ];
 }
