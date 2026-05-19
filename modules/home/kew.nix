@@ -47,11 +47,6 @@
   };
 
   # Автозапуск виджетов
-  home.activation = {
-    runAfterHomeManagerSwitch = [
-      "openclaw-widget &"
-      "kew-widget &"
-    ];
-  };
+
 }
 
