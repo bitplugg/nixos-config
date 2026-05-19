@@ -1,16 +1,16 @@
 # kew - консольный музыкальный плеер + kew-video
 { config, pkgs, ... }:
 
-let
-  kew-video = pkgs.writeShellScriptBin "kew-video" ''
-    #!${pkgs.runtimeShell}
-    exec ${pkgs.python3}/bin/python3 ${./scripts/kew-video} "$@"
-  '';
-in {
+{
   home.packages = with pkgs; [
     kew
-    kew-video  # Добавляем kew-video как команду
+    mpv          # Плеер для видео
+    python3      # Для запуска скрипта
   ];
+
+  # Создаём команду kew-video из локального скрипта
+  home.file.".local/bin/kew-video".source = ./scripts/kew-video;
+  home.file.".local/bin/kew-video".executable = true;
 
   # Настройка горячих клавиш (опционально)
   home.keyboard = {
@@ -27,4 +27,5 @@ in {
   home.aliases = {
     "kew-video" = "kew-video";
   };
+}
 }

@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+import os
+import subprocess
+import argparse
+from pathlib import Path
+
+# Директория с видео (по умолчанию ~/Music)
+VIDEO_DIR = os.path.expanduser("~/Music")
+
+# Поддерживаемые форматы видео
+def get_video_files(directory):
+    video_extensions = {'.mp4', '.mkv', '.webm', '.avi', '.mov'}
+    video_files = []
+    for root, _, files in os.walk(directory):
+        for file in files:
+            if Path(file).suffix.lower() in video_extensions:
+                video_files.append(os.path.join(root, file))
+    return video_files
+
+# Поиск видео по названию
+def search_videos(query, directory=VIDEO_DIR):
+    video_files = get_video_files(directory)
+    return [f for f in video_files if query.lower() in f.lower()]
+
+# Запуск видео через mpv
+def play_video(video_path):
+    try:
+        subprocess.run(["mpv", video_path], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Ошибка при воспроизведении: {e}")
+    except FileNotFoundError:
+        print("mpv не установлен. Установите его через: nix-shell -p mpv")
+
+# Основная логика
+def main():
+    parser = argparse.ArgumentParser(description="Kew Video Player - просмотр клипов через mpv")
+    parser.add_argument("--search", help="Поиск видео по названию")
+    parser.add_argument("--playlist", action="store_true", help="Воспроизвести все видео из директории")
+    parser.add_argument("--dir", help="Указать директорию с видео")
+    args = parser.parse_args()
+    
+    directory = args.dir if args.dir else VIDEO_DIR
+    
+    if args.search:
+        videos = search_videos(args.search, directory)
+        if not videos:
+            print(f"Видео с названием '{args.search}' не найдено.")
+            return
+        print("Найденные видео:")
+        for i, video in enumerate(videos, 1):
+            print(f"{i}. {video}")
+        video_path = videos[0]  # По умолчанию выбираем первое видео
+        play_video(video_path)
+    
+    elif args.playlist:
+        videos = get_video_files(directory)
+        if not videos:
+            print("Видео не найдены в директории.")
+            return
+        print("Воспроизведение всех видео:")
+        for video in videos:
+            play_video(video)
+    
+    else:
+        print("Использование:")
+        print('  kew-video --search "Название"  # Поиск и воспроизведение видео')
+        print("  kew-video --playlist          # Воспроизвести все видео")
+        print("  kew-video --dir ~/Videos      # Указать директорию")
+
+if __name__ == "__main__":
+    main()
