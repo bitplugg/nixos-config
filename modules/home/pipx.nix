@@ -7,5 +7,6 @@
     python3Packages.beautifulsoup4
     python3Packages.requests
     python3Packages.debugpy # для nvim-dap-python
+    python3Packages.normalizer
   ];
 }
