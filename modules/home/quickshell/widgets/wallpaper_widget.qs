@@ -34,9 +34,16 @@ Window {
                 Layout.fillWidth: true
             }
 
+            ComboBox {
+                id: sourceCombo
+                model: ["Unsplash", "Wallpaper Bank"]
+                currentIndex: 0
+            }
+
             Button {
                 text: "Скачать"
                 onClicked: {
+                    var source = sourceCombo.currentText.toLowerCase().replace(" ", "_")
                     Qt.callLater("python3", [
                         "/home/bitplugg/nixos-config/modules/home/quickshell/scripts/wallpaper_downloader.py",
                         searchField.text

@@ -18,6 +18,21 @@ Window {
             yellow: "#fabd2f", blue: "#83a598",
             purple: "#d3869b", green: "#b8bb26"
         },
+        "Catppuccin Mocha": {
+            bg: "#1e1e2e", fg: "#cdd6f4",
+            yellow: "#f9e2af", blue: "#89b4fa",
+            purple: "#cba6f7", green: "#a6e3a1"
+        },
+        "Nord": {
+            bg: "#2e3440", fg: "#d8dee9",
+            yellow: "#ebcb8b", blue: "#81a1c1",
+            purple: "#b48ead", green: "#a3be8c"
+        },
+        "Solarized Dark": {
+            bg: "#002b36", fg: "#839496",
+            yellow: "#b58900", blue: "#268bd2",
+            purple: "#6c71c4", green: "#859900"
+        },
         "Dracula": {
             bg: "#282a36", fg: "#f8f8f2",
             yellow: "#f1fa8c", blue: "#8be9fd",
