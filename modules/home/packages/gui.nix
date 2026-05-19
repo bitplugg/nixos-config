@@ -16,6 +16,7 @@
     gnome-calculator
 
     ## Utility
+    brave                            # Chromium-based browser
     dconf-editor
     gnome-disk-utility
     popsicle

@@ -58,6 +58,9 @@
 
   powerManagement.cpuFreqGovernor = "performance";
   programs.amnezia-vpn.enable = true;
+  nixpkgs.config.permittedInsecurePackages = [ "openclaw-2026.4.22" "openclaw-2026.5.7" ];
+  nixpkgs.overlays = [ inputs.nix-openclaw.overlays.default ];
+
   nix.settings = {
     substituters = [
       "https://mirror.yandex.ru/nix-channels/store"

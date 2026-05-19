@@ -66,6 +66,7 @@
     entr                              # perform action when file change
     ffmpeg
     file                              # Show file information
+    gogcli                            # Google Workspace CLI
     jq                                # JSON processor
     killall
     libnotify
@@ -75,6 +76,7 @@
     playerctl                         # controller for media players
     poweralertd
     socat
+    sonoscli                          # Sonos CLI
     udiskie                           # Automounter for removable media
     unzip
     wget
