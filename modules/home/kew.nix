@@ -26,6 +26,16 @@
   # Alias для kew (запуск kew-video из kew)
   home.aliases = {
     "kew-video" = "kew-video";
+    "openclaw-widget" = "quickshell ${./scripts/openclaw_widget.qs}";
+    "kew-widget" = "quickshell ${./scripts/kew_widget.qs}";
+  };
+
+  # Автозапуск виджетов
+  home.activation = {
+    runAfterHomeManagerSwitch = [
+      "openclaw-widget &"
+      "kew-widget &"
+    ];
   };
 }
-}
+
