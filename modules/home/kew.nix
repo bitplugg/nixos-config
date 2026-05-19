@@ -25,11 +25,7 @@
 
   # Создаём исполняемые алиасы в ~/.local/bin
   home.file = {
-    ".local/bin/kew-video".text = ''
-      #!${pkgs.runtimeShell}
-      exec kew-video "$@"
-    '';
-    ".local/bin/kew-video".executable = true;
+
 
     ".local/bin/openclaw-widget".text = ''
       #!${pkgs.runtimeShell}
