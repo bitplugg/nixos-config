@@ -7,7 +7,7 @@
     python3Packages.requests
     qt5.qtwayland  # Поддержка Wayland
     qt5.qtdeclarative  # Для qmlscene/qml
-    pipx  # Для установки зависимостей
+      # Для установки зависимостей
   ];
 
   # Автозагрузка виджета погоды в Hyprland
