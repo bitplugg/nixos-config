@@ -51,6 +51,7 @@
     ./zoom.nix                        # zoom
     ./rust.nix                        # rust language
     ./gradle.nix                      # gradle -> build apk
+    ./clawshell/default.nix            # ClawShell GUI
     ./apktool.nix                     # apktool pkgs
     ./yazi.nix                        # yazi
     ./openclaw.nix                    # openclaw
