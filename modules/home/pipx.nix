@@ -9,5 +9,7 @@
   ];
 
   # Установка Python-пакетов через pipx
-  home.activation.installPipxPackages = [ "requests" ];
+  home.activation.installPipxPackages = [
+    { package = "requests"; }
+  ];
 }
