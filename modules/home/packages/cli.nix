@@ -76,6 +76,7 @@
     pamixer                           # pulseaudio command line mixer
     playerctl                         # controller for media players
     poweralertd
+    python3Packages.requests          # Python HTTP requests
     socat
     udiskie                           # Automounter for removable media
     unzip
